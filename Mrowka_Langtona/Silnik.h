@@ -8,8 +8,6 @@
 class Silnik
 {
 protected:
-	HANDLE tlo;
-	void zmien_kolor_tla();
 	int wysokosc,szerokosc, kat, wsp_w, wsp_s;
 	Komorka **tablica;
 	Silnik(int wysokosc,int szerokosc);

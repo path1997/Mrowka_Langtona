@@ -1,17 +1,5 @@
 #include "Silnik.h"
 
-
-void Silnik::zmien_kolor_tla()
-{
-	SetConsoleTextAttribute(tlo, 240);
-	for (int i = 0; i < wysokosc; i++) {
-		for (int j = 0; j < szerokosc; j++) {
-			std::cout << " ";
-		}
-		std::cout << std::endl;
-	}
-}
-
 Silnik::Silnik(int wysokosc,int szerokosc)
 {
 	tablica = new Komorka *[wysokosc];
