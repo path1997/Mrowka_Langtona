@@ -4,7 +4,7 @@
 
 Komorka::Komorka()
 {
-	stan = 0;
+	stan = false;
 }
 
 Komorka::~Komorka()

@@ -10,6 +10,7 @@ public:
 	Komorka();
 	~Komorka();
 	friend class Silnik;
+	friend class GraKonsola;
 };
 
 

@@ -1,63 +1,106 @@
 #include "Silnik.h"
 
 
-
-
-
+void Silnik::zmien_kolor_tla()
+{
+	SetConsoleTextAttribute(tlo, 240);
+	for (int i = 0; i < wysokosc; i++) {
+		for (int j = 0; j < szerokosc; j++) {
+			std::cout << " ";
+		}
+		std::cout << std::endl;
+	}
+}
 
 Silnik::Silnik(int wysokosc,int szerokosc)
 {
-	tablica = new int *[wysokosc];
+	tablica = new Komorka *[wysokosc];
 	for (int i = 0; i < wysokosc; i++) {
-		tablica[i] = new int[szerokosc];
+		tablica[i] = new Komorka[szerokosc];
 	}
+
 	this->szerokosc = szerokosc;
 	this->wysokosc = wysokosc;
-	kat = 2;
+	kat = 1;
 	wsp_w = wysokosc / 2;
 	wsp_s = szerokosc / 2;
+	tlo= GetStdHandle(STD_OUTPUT_HANDLE);
+
 }
 
 void Silnik::poruszaj_sie()
 {
-	bool stan_kom=tablica[wsp_w][wsp_s];
+	bool stan_kom=tablica[wsp_w][wsp_s].stan;
 	/*
 	kat:
-	2 prosto
-	1 lewo
-	0 do tylu
-	3 w prawo
+	2 pó³noc
+	1 zachód
+	0 po³udnie
+	3 wschód
 	*/
 
 	
+	if (tablica[wsp_w][wsp_s].stan == false) {
+		tablica[wsp_w][wsp_s].stan = true;
+	}
+	else {
+		tablica[wsp_w][wsp_s].stan = false;
+	}
+
+	if (stan_kom == false) {
+		if (kat == 2) {
+			wsp_s--;
+		} else if (kat == 1) {
+			wsp_w--;
+		} else if (kat == 0) {
+			wsp_s++;
+		} else if (kat == 3) {
+			wsp_w++;
+		}
+	} else if (stan_kom = true) {
+		if (kat == 2) {
+			wsp_s++;
+		} else if (kat == 1) {
+			wsp_w++;
+		} else if (kat == 0) {
+			wsp_s--;
+		} else if (kat == 3) {
+			wsp_w--;
+		}
+	}
+
+	if (stan_kom == false) {
+		kat--;
+	} else {
+		kat++;
+	}
+
 	if (kat == -1) {
 		kat = 3;
 	}
 	else if (kat == 4) {
 		kat = 0;
 	}
-	tablica[wsp_w][wsp_s] = true;
-	if (stan_kom == false) {
-		if (kat == 2) {
-			wsp_s--;
-		}
-		else if (kat == 1) {
-			wsp_w--;
-		}
-		else if (kat == 0) {
-			wsp_s++;
-		} 
-		else if
+
+	if (wsp_s > szerokosc) {
+		wsp_s = 0;
+	} else if (wsp_s < 0) {
+		wsp_s = szerokosc;
 	}
-	if (stan_kom == false) {
-		kat--;
+
+	if (wsp_w > wysokosc) {
+		wsp_w = 0;
 	}
-	else {
-		kat++;
+	else if (wsp_w < 0) {
+		wsp_w = wysokosc;
 	}
 }
 
 
 Silnik::~Silnik()
 {
+	for (int i = 0; i < wysokosc; i++) {
+		delete[] tablica[i];
+	}
+	delete[] tablica;
 }

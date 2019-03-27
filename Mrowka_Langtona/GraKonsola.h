@@ -2,11 +2,14 @@
 #define GraKonsola_h
 
 #include"Gra.h"
+#include"Komorka.h"
 
 class GraKonsola: public Gra
 {
+public:
 	GraKonsola(int wysokosc, int szerokosc) :Gra(wysokosc,szerokosc) {}
-	~GraKonsola();
+	virtual void wyswietl();
+	virtual~GraKonsola();
 };
 
 #endif
