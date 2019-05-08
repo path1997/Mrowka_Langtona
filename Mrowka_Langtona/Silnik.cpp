@@ -1,18 +1,7 @@
 #include "Silnik.h"
 
 
-void Silnik::zmien_kolor_tla()
-{
-	SetConsoleTextAttribute(tlo, 240);
-	for (int i = 0; i < wysokosc; i++) {
-		for (int j = 0; j < szerokosc; j++) {
-			std::cout << " ";
-		}
-		std::cout << std::endl;
-	}
-}
-
-Silnik::Silnik(int wysokosc,int szerokosc)
+Silnik::Silnik(int wysokosc,int szerokosc,int kat)
 {
 	tablica = new Komorka *[wysokosc];
 	for (int i = 0; i < wysokosc; i++) {
@@ -21,10 +10,9 @@ Silnik::Silnik(int wysokosc,int szerokosc)
 
 	this->szerokosc = szerokosc;
 	this->wysokosc = wysokosc;
-	kat = 1;
+	this->kat = kat;
 	wsp_w = wysokosc / 2;
 	wsp_s = szerokosc / 2;
-	tlo= GetStdHandle(STD_OUTPUT_HANDLE);
 
 }
 
@@ -57,7 +45,7 @@ void Silnik::poruszaj_sie()
 		} else if (kat == 3) {
 			wsp_w++;
 		}
-	} else if (stan_kom = true) {
+	} else if (stan_kom == true) {
 		if (kat == 2) {
 			wsp_s++;
 		} else if (kat == 1) {
@@ -82,17 +70,17 @@ void Silnik::poruszaj_sie()
 		kat = 0;
 	}
 
-	if (wsp_s > szerokosc) {
+	if (wsp_s > szerokosc-1) {
 		wsp_s = 0;
 	} else if (wsp_s < 0) {
-		wsp_s = szerokosc;
+		wsp_s = szerokosc-1;
 	}
 
-	if (wsp_w > wysokosc) {
+	if (wsp_w > wysokosc-1) {
 		wsp_w = 0;
 	}
 	else if (wsp_w < 0) {
-		wsp_w = wysokosc;
+		wsp_w = wysokosc-1;
 	}
 }
 

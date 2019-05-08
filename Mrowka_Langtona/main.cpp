@@ -1,7 +1,7 @@
 #include"GraKonsola.h"
 
 int main() {
-	GraKonsola K(30, 50);
-	K.start(800);
+	GraKonsola K(20, 30,2);
+	K.start(500);
 	return 0;
 }

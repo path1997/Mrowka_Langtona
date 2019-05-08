@@ -2,11 +2,11 @@
 
 
 
-void Gra::start(int predkosc)
+void Gra::start(int opoznienie)
 {
+	this->opoznienie = opoznienie;
 	while (1) {
 		kroki++;
-		this->predkosc = predkosc;
 		poruszaj_sie();
 		wyswietl();
 	}

@@ -17,7 +17,7 @@ void GraKonsola::wyswietl()
 		std::cout << std::endl;
 	}
 	std::cout << kroki<<std::endl;
-	Sleep(predkosc);
+	Sleep(opoznienie);
 }
 
 GraKonsola::~GraKonsola()

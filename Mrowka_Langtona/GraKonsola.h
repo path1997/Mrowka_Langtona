@@ -7,7 +7,7 @@
 class GraKonsola: public Gra
 {
 public:
-	GraKonsola(int wysokosc, int szerokosc) :Gra(wysokosc,szerokosc) {}
+	GraKonsola(int wysokosc, int szerokosc,int kat) :Gra(wysokosc,szerokosc,kat) {}
 	virtual void wyswietl();
 	virtual~GraKonsola();
 };

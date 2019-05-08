@@ -6,12 +6,12 @@
 class Gra:public Silnik
 {
 public:
-	int predkosc,kroki;
-	Gra(int wysokosc, int szerokosc):Silnik(wysokosc,szerokosc){
+	int opoznienie,kroki;
+	Gra(int wysokosc, int szerokosc,int kat):Silnik(wysokosc,szerokosc,kat){
 		kroki = 0;
-		predkosc = 0;
+		opoznienie = 0;
 	}
-	void start(int predkosc);
+	void start(int opoznienie);
 	virtual void wyswietl()=0;
 	virtual ~Gra();
 };
